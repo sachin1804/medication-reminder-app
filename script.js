@@ -164,7 +164,7 @@ function showNotification(title, message) {
     if ("Notification" in window && Notification.permission === "granted") {
         var options = {
             body: message,
-            icon: "notification-icon.png" // Replace with your notification icon URL
+            icon: "/img/icons8-notification.gif" // Replace with your notification icon URL
         };
 
         new Notification(title, options);
@@ -176,3 +176,11 @@ function showNotification(title, message) {
         });
     }
 }
+
+window.addEventListener("load", function () {
+    if ("Notification" in window) {
+        if (Notification.permission !== "granted") {
+            Notification.requestPermission();
+        }
+    }
+});

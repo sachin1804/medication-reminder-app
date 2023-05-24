@@ -51,6 +51,14 @@ body {
     position: relative;
 }
 
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
 header {
     background-color: #333;
     padding: 20px;
