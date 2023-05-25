@@ -142,6 +142,8 @@ function scheduleMedicationReminder(medication) {
     if (timeDifference > 0) {
         setTimeout(function () {
             showNotification("Medication Reminder", "It's time to take your medication: " + medication.medicationName);
+            alert("Please check the notification its time for your medication");
+
         }, timeDifference);
     }
 }
@@ -164,7 +166,7 @@ function showNotification(title, message) {
     if ("Notification" in window && Notification.permission === "granted") {
         var options = {
             body: message,
-            icon: "/img/icons8-notification.gif" // Replace with your notification icon URL
+            icon: "notification-icon.png" // Replace with your notification icon URL
         };
 
         new Notification(title, options);
