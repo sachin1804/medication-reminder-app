@@ -1,36 +1,55 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <title>MediCare Companion</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+	<link rel="stylesheet" href="styles.css">
+	<title> MediCare Companion | Login page</title>
 </head>
+<script type="text/javascript">
+	var input = document.getElementById("password");
+
+
+	function display(form) {
+		if (form.username.value == "root" && form.password.value == "root") {
+			window.location.href = "home.html";
+		} else {
+			alert("Invalid Username/password");
+		}
+	}
+</script>
 
 <body>
-    <header>
-        <h1>MediCare Companion</h1>
-    </header>
-    <main>
-        <section id="medication-section">
-            <h2>Medication Schedule</h2>
-            <form id="medication-form">
-                <input type="text" id="medication-name-input" placeholder="Enter medication name" required>
-                <input type="text" id="dosage-input" placeholder="Enter dosage" required>
-                <input type="time" id="schedule-input" placeholder="Enter schedule" required>
-                <button type="submit">Add Medication</button>
-            </form>
-        </section>
-        <section id="reminder-section">
-            <h2>Medication Reminders</h2>
-            <ul id="medication-list"></ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 MediCare Companion. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+	<div class="container">
+		<div class="screen">
+			<div class="screen__content">
+				<form class="login">
+					<h1> Medicare Companion Login</h1>
+					<div class="login__field">
+						<i class="login__icon fas fa-user"></i>
+
+						<input type="text" class="login__input" placeholder="User name" name="username"
+							title="Username is root" />
+					</div>
+					<div class="login__field">
+						<i class="login__icon fas fa-lock"></i>
+
+						<input id="password" type="password" name="password" class="login__input" placeholder="Password"
+							title="password is root" />
+					</div>
+					<br>
+					<input class="button__icon fas fa-chevron-right" id="button" type="button" value="Login"
+						onClick="display(this.form)" />
+
+				</form>
+
+			</div>
+			<div class="screen__background">
+				<span class="screen__background__shape screen__background__shape4"></span>
+				<span class="screen__background__shape screen__background__shape3"></span>
+				<span class="screen__background__shape screen__background__shape2"></span>
+				<span class="screen__background__shape screen__background__shape1"></span>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

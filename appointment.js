@@ -1,21 +1,19 @@
-// const { func } = require("prop-types");
-
 document.getElementById("medication-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
-    var medicationName = document.getElementById("medication-name-input").value;
-    var dosage = document.getElementById("dosage-input").value;
+    var doctorName = document.getElementById("doctor-name-input").value;
+    var appointment = document.getElementById("appointment-input").value;
     var schedule = document.getElementById("schedule-input").value;
 
-    var medication = {
-        medicationName: medicationName,
-        dosage: dosage,
+    var appointmentScheduled = {
+        doctorName: doctorName,
+        appointment: appointment,
         schedule: schedule
     };
 
-    var medicationList = document.getElementById("medication-list");
+    var appointmentList = document.getElementById("appointment-list");
     var listItem = document.createElement("li");
-    listItem.textContent = "Medication: " + medication.medicationName + " | Dosage: " + medication.dosage + " | Schedule: " + medication.schedule;
+    listItem.textContent = "Appointment: " + appointmentScheduled.doctorName + " | Appointment: " + appointmentScheduled.appointment + " | Schedule: " + appointmentScheduled.schedule;
 
     // Create a delete button for the medication reminder
     var deleteButton = document.createElement("button");
@@ -25,44 +23,44 @@ document.getElementById("medication-form").addEventListener("submit", function (
 
     // Add an event listener to the delete button
     deleteButton.addEventListener("click", function () {
-        deleteMedicationReminder(medication, listItem);
+        deleteAppointmentReminder(medication, listItem);
     });
 
-    medicationList.appendChild(listItem);
+    appointmentList.appendChild(listItem);
 
     // Save medication to the web storage
-    saveMedicationReminder(medication);
+    saveAppointmentReminder(appointmentScheduled);
 
     // Clear the input fields after adding medication
-    document.getElementById("medication-name-input").value = "";
-    document.getElementById("dosage-input").value = "";
+    document.getElementById("doctor-name-input").value = "";
+    document.getElementById("appointment-input").value = "";
     document.getElementById("schedule-input").value = "";
 
     // Schedule the medication reminder notification
-    scheduleMedicationReminder(medication, listItem);
+    scheduleAppointmentReminder(appointmentScheduled, listItem);
 });
 
 // Load saved medication reminders on page load
 window.addEventListener("load", function () {
-    loadMedicationReminders();
+    loadAppointmentReminders();
 });
 
-function saveMedicationReminder(medication) {
-    var medicationReminders = JSON.parse(localStorage.getItem("medicationReminders")) || [];
+function saveAppointmentReminder(appointmentScheduled) {
+    var appointmentReminders = JSON.parse(localStorage.getItem("appointmentReminders")) || [];
 
-    medicationReminders.push(medication);
+    appointmentReminders.push(appointmentScheduled);
 
-    localStorage.setItem("medicationReminders", JSON.stringify(medicationReminders));
+    localStorage.setItem("appointmentReminders", JSON.stringify(appointmentReminders));
 }
 
-function loadMedicationReminders() {
-    var medicationReminders = JSON.parse(localStorage.getItem("medicationReminders")) || [];
+function loadAppointmentReminders() {
+    var appointmentReminders = JSON.parse(localStorage.getItem("appointmentReminders")) || [];
 
-    var medicationList = document.getElementById("medication-list");
+    var appointmentList = document.getElementById("appointment-list");
 
-    medicationReminders.forEach(function (medication) {
+    appointmentReminders.forEach(function (appointmentScheduled) {
         var listItem = document.createElement("li");
-        listItem.textContent = "Medication: " + medication.medicationName + " | Dosage: " + medication.dosage + " | Schedule: " + medication.schedule;
+        listItem.textContent = "Appointment: " + appointmentScheduled.doctorName + " | Appointment: " + appointmentScheduled.appointment + " | Schedule: " + appointmentScheduled.schedule;
 
         // Create a delete button for the medication reminder
         var deleteButton = document.createElement("button");
@@ -72,36 +70,35 @@ function loadMedicationReminders() {
 
         // Add an event listener to the delete button
         deleteButton.addEventListener("click", function () {
-            deleteMedicationReminder(medication, listItem);
+            deleteAppointmentReminder(appointmentScheduled, listItem);
         });
 
 
         // Schedule the medication reminder notification
-        medicationList.appendChild(listItem);
-
-        scheduleMedicationReminder(medication);
+        appointmentList.appendChild(listItem);
+        scheduleAppointmentReminder(appointmentScheduled, listItem);
 
     });
 }
 
-function deleteMedicationReminder(medication, listItem) {
+function deleteAppointmentReminder(appointmentScheduled, listItem) {
     // Remove the medication reminder from the UI
     listItem.remove();
 
     // Remove the medication reminder from the web storage
-    var medicationReminders = JSON.parse(localStorage.getItem("medicationReminders")) || [];
-    var updatedReminders = medicationReminders.filter(function (reminder) {
-        return reminder.medicationName !== medication.medicationName;
+    var appointmentReminders = JSON.parse(localStorage.getItem("appointmentReminders")) || [];
+    var updatedReminders = appointmentReminders.filter(function (reminder) {
+        return reminder.doctorName !== appointmentScheduled.doctorName;
     });
-    localStorage.setItem("medicationReminders", JSON.stringify(updatedReminders));
+    localStorage.setItem("appointmentReminders", JSON.stringify(updatedReminders));
 
     // Perform additional actions as needed, such as canceling scheduled notifications or deleting from the database
-    console.log("Medication reminder deleted:", medication);
+    console.log("Appointment reminder deleted:", appointmentScheduled);
 }
 
 
-function scheduleMedicationReminder(medication, listItem) {
-    var scheduleTime = parseScheduleTime(medication.schedule);
+function scheduleAppointmentReminder(appointmentScheduled, listItem) {
+    var scheduleTime = parseScheduleTime(appointmentScheduled.schedule);
     var currentTime = new Date();
 
     // Calculate the time difference in milliseconds between the current time and the scheduled time
@@ -111,13 +108,13 @@ function scheduleMedicationReminder(medication, listItem) {
     // Schedule the notification if the scheduled time is in the future
     if (timeDifference > 0) {
         setTimeout(function () {
-            showNotification("Medication Reminder", "It's time to take your medication: " + medication.medicationName);
+            showNotification("Appointment Reminder", "Its time for your appointment with Dr. " + appointmentScheduled.doctorName);
             // alert("Please check the notification its time for your medication");
         }, timeDifference);
     }
     else {
         alert("You can't set reminder for passed out time");
-        deleteMedicationReminder(medication, listItem);
+        deleteAppointmentReminder(appointmentScheduled, listItem);
     }
 }
 
@@ -171,4 +168,3 @@ document.getElementById("click-me").addEventListener("click", function () {
         document.getElementById("menu").style.display = "none";
     }
 })
-

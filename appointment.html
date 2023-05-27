@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>MediCare Companion | Appointments</title>
+</head>
+
+<body>
+    <nav>
+        <h1>MediCare</h1>
+        <ul id="list">
+            <li><a href="home.html">About</a></li>
+            <li title="go to LoginPage"><a href="index.html">LoginPage</a></li>
+            <li title="Click to set medication reminders"><a href="home.html">Medication</a></li>
+            <li title="Search for more info"><a href="https://www.google.com" target="_blank">Search</a></li>
+        </ul>
+    </nav>
+    <section id="menu-section">
+        <p id="click-me">Menu</p>
+        <ul id="menu">
+            <li><a href="home.html">About</a></li>
+            <li title="go to LoginPage"><a href="index.html">LoginPage</a></li>
+            <li title="Click to set medication reminders"><a href="home.html">Medication</a></li>
+            <li title="Search for more info"><a href="https://www.google.com" target="_blank">Search</a></li>
+        </ul>
+    </section>
+    <br>
+    <section id="medication-section" class="m1">
+        <h2>Appointment Schedule</h2>
+        <br>
+        <form id="medication-form">
+            <input type="text" id="doctor-name-input" placeholder="Enter Doctor name"
+                title="Enter doctor's name with your appointment is scheduled" required>
+            <input type="text" id="appointment-input" placeholder="Enter appointment" title="Enter appointment purpose"
+                required>
+            <input type="datetime-local" id="schedule-input" placeholder="Enter schedule" title="Enter Date and time"
+                required>
+            <br>
+            <br>
+            <button type="submit">Add Appointment</button>
+        </form>
+        <br>
+    </section>
+    <section id="reminder-section" class="m1">
+        <h2>Appointment Reminders</h2>
+        <ul id="appointment-list"></ul>
+    </section>
+    <footer>
+        <p>&copy; 2023 MediCare Companion. All rights reserved.</p>
+    </footer>
+    <script src="appointment.js"></script>
+</body>
+
+</html>

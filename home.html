@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MediCare Companion | Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <h1>MediCare</h1>
+        <ul id="list">
+            <li><a href="#medication-section">Medication</a></li>
+            <li title="go to LoginPage"><a href="index.html">LoginPage</a></li>
+            <li title="Click to set appointment reminders"><a href="appointment.html">Appointments</a></li>
+            <li title="Search for more info"><a href="https://www.google.com" target="_blank">Search</a></li>
+        </ul>
+    </nav>
+    <section id="menu-section">
+        <p id="click-me">Menu</p>
+        <ul id="menu">
+            <li><a href="#medication-section">Medication</a></li>
+            <li title="go to LoginPage"><a href="index.html">LoginPage</a></li>
+            <li title="Click to set appointment reminders"><a href="appointment.html">Appointments</a></li>
+            <li title="Search for more info"><a href="https://www.google.com" target="_blank">Search</a></li>
+        </ul>
+    </section>
+    <main>
+        <section id="info-section">
+            <h1>Welcome! to MediCare Companion</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus excepturi neque, eius aperiam qui facere
+                non quibusdam corrupti. Cumque hic illum quas fuga asperiores nostrum quo totam fugit, distinctio
+                dolorum molestias praesentium rem eligendi, at pariatur consequatur rerum, nisi id? Quidem pariatur
+                similique nobis voluptas sapiente expedita, quas veniam laboriosam perspiciatis praesentium quia amet
+                natus, aspernatur enim dolor vero aperiam iusto delectus reprehenderit aliquam in voluptatibus
+                accusantium repellat optio! Aspernatur fugit laudantium fugiat, animi quod rerum aut consequatur
+                accusamus, a quam eos eius magni eveniet reprehenderit quasi nihil vel hic similique laborum. Soluta
+                commodi, cupiditate ipsa vel suscipit officia doloremque quibusdam sit dicta labore non quae tempora
+                fugit aliquam consequatur? Minima natus, eos libero repellendus accusamus debitis asperiores ea magnam
+                mollitia magni dolor quasi labore, illum deserunt eveniet a. Repellendus placeat nemo, velit corrupti
+                libero doloribus in labore voluptatem inventore provident, possimus autem maxime unde quam similique
+                asperiores aliquid minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint officiis ad
+                facilis similique mollitia. Pariatur nisi voluptas itaque, iure dolores minus fugit! Reprehenderit,
+                neque itaque quaerat alias ex cum officiis architecto, error voluptas ullam repellendus praesentium fuga
+                dolores! Unde assumenda eveniet nulla doloribus adipisci. Ut unde iste nisi dignissimos provident? </p>
+        </section>
+        <br>
+        <hr>
+        <section id="medication-section">
+            <h2>Medication Schedule</h2>
+            <br>
+            <form id="medication-form">
+                <input type="text" id="medication-name-input" placeholder="Enter medication name" required>
+                <input type="text" id="dosage-input" placeholder="Enter dosage" required>
+                <input type="time" id="schedule-input" placeholder="Enter schedule" title="Enter Time of your medicine"
+                    required>
+                <br>
+                <br>
+                <button type="submit">Add Medication</button>
+            </form>
+            <br>
+        </section>
+        <section id="reminder-section">
+            <h2>Medication Reminders</h2>
+            <ul id="medication-list"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 MediCare Companion. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
